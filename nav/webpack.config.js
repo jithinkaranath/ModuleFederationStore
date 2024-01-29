@@ -48,16 +48,18 @@ module.exports = {
         store: "store@http://localhost:3002/remoteEntry.js"
       },
       exposes: {
-        "./Header": "./src/Header",
+        "./Header": "./src/Header"
       },
       shared: {
         ...deps,
         react: {
           singleton: true,
+          eager: true,
           requiredVersion: deps.react,
         },
         "react-dom": {
           singleton: true,
+          eager: true,
           requiredVersion: deps["react-dom"],
         },
       },

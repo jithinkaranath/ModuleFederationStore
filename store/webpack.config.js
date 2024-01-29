@@ -43,18 +43,22 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "store",
       filename: "remoteEntry.js",
-      remotes: {},
+      remotes: {
+        nav: "nav@http://localhost:3001/remoteEntry.js"
+      },
       exposes: {
-        "./store": "./src/store",
+        "./store": "./src/store"
       },
       shared: {
         ...deps,
         react: {
           singleton: true,
+          eager: true,
           requiredVersion: deps.react,
         },
         "react-dom": {
           singleton: true,
+          eager: true,
           requiredVersion: deps["react-dom"],
         },
       },

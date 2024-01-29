@@ -1,44 +1,10 @@
 import React from "react";
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-import { Provider, useSelector, useDispatch } from "react-redux";
-
-export const counterSlice = createSlice({
-  name: "counter",
-  initialState: {
-    count: 0,
-  },
-  reducers: {
-    increment: (state) => {
-      state.count += 1; 
-      console.log("from store slice", state.count)
-    },
-    decrement: (state) => {
-      state.count -= 1;
-      console.log("from decrement slice", state.count)
-    },
-    clear: (state) => {
-      state.count = 0;
-    },
-  },
-});
-
-const { increment, clear, decrement } = counterSlice.actions;
-
-const store = configureStore({
-  reducer: {
-    counter: counterSlice.reducer,
-  },
-});
+import { Provider } from "react-redux";
+import { store , selectors} from "./app/store";
+import actions from "./app/actions";
 
 export function useStore() {
-  const count = useSelector((state) => state.counter.count);
-  const dispatch = useDispatch();
-  return {
-    count,
-    decrement:()=>dispatch(decrement()),
-    increment: () => dispatch(increment()),
-    clear: () => dispatch(clear()),
-  };
+  return {actions, selectors};
 }
 
 export function StoreProvider({ children }) {

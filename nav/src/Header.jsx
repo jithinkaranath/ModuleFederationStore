@@ -1,11 +1,20 @@
 import React from "react";
 
 import { useStore } from "store/store";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { MODULE } from "./common/constant";
+const { actions, selectors={} } = useStore();
+const { getSampleDetailsCount } = selectors[`${MODULE.NAV}/sample`];
+const { actions: { incrementCount } = {} } = actions[`${MODULE.NAV}/sample`];
 
  const Header= (props) => {
   const{ dummyData}=props
   console.log("dummyData===",dummyData)
-  const { count, clear } = useStore();
+  //  const { count, clear } = useStore();
+   const count = useSelector(getSampleDetailsCount);
+  const dispatch = useDispatch();
+   
   return (
     <>
  
@@ -15,7 +24,7 @@ import { useStore } from "store/store";
         {count}
 
         <button
-          onClick={clear}
+          onClick={()=>dispatch(incrementCount())}
           className="bg-indigo-800 text-white font-bold py-2 px-4 rounded"
         >
           Clear Count
