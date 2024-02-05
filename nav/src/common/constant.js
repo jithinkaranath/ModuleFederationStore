@@ -1,5 +1,6 @@
 export const MODULE = {
-    "NAV": "nav"
+    "NAV": "nav",
+    "HEADER":"header"
 };
 
 export const REQUEST_METHOD = {

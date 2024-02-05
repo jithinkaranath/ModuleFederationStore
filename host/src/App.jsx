@@ -8,10 +8,12 @@ import { useDispatch ,useSelector} from 'react-redux';
 const Header = lazy(() => import('nav/Header'));
 import { MODULE } from "./common/constant";
 const { actions, selectors={} } = useStore();
-const { getSampleDetailsCount } = selectors[`${MODULE.NAV}/sample`];
+const { getSampleDetailsCount, getIncrementCount } = selectors[`${MODULE.NAV}/sample`];
 const { actions: { incrementCount, fetchSampleDetails }={} } = actions[`${MODULE.NAV}/sample`];
 const App = () => {
   const count = useSelector(getSampleDetailsCount); 
+  const incrementCountValue = useSelector(getIncrementCount); 
+
   const dispatch = useDispatch();
   
   return (
@@ -39,6 +41,7 @@ const App = () => {
           Clear
         </button>
       </div>
+      {incrementCountValue}
     </div>
   );
 };

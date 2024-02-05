@@ -4,12 +4,7 @@ import { STATE_REDUCER_KEY } from './constants';
 import { ACTION_TYPES } from './actions';
 
 const initialState = {
-  count: 0,
-  sampleDetails: {
-    count: 0
-  },
-  remarkDetails: '',
-  incrementCount:{
+  headerIncrementCount:{
     count:0
   }
 };
@@ -26,8 +21,8 @@ const slice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(ACTION_TYPES.FETCH_SAMPLE_DETAILS, (state, { payload }) => {
       _.set(state, 'remarkDetails', payload);
-    }).addCase(ACTION_TYPES.INCREMENT_COUNT, (state, { payload }) => {
-      _.set(state, 'incrementCount.count', state.incrementCount.count + 1);
+    }).addCase(ACTION_TYPES.HEADER_INCREMENT_COUNT, (state, { payload }) => {
+      _.set(state, 'headerIncrementCount.count', state.headerIncrementCount.count + 1);
     })
   }
 });

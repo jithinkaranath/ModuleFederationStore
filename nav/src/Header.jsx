@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { MODULE } from "./common/constant";
 const { actions, selectors={} } = useStore();
-const { getSampleDetailsCount } = selectors[`${MODULE.NAV}/sample`];
+const { getSampleDetailsCount,getIncrementCount } = selectors[`${MODULE.NAV}/sample`];
 const { actions: { incrementCount } = {} } = actions[`${MODULE.NAV}/sample`];
 
  const Header= (props) => {
@@ -13,6 +13,8 @@ const { actions: { incrementCount } = {} } = actions[`${MODULE.NAV}/sample`];
   console.log("dummyData===",dummyData)
   //  const { count, clear } = useStore();
    const count = useSelector(getSampleDetailsCount);
+   const incrementCountValue = useSelector(getIncrementCount);
+
   const dispatch = useDispatch();
    
   return (
@@ -21,7 +23,7 @@ const { actions: { incrementCount } = {} } = actions[`${MODULE.NAV}/sample`];
     <header className="bg-blue-700 text-white font-bold text-3xl p-5 flex">
       <div className="flex-grow"> Nav Header</div>
       <div>
-        {count}
+        {incrementCountValue}
 
         <button
           onClick={()=>dispatch(incrementCount())}
