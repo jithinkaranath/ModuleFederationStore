@@ -3,35 +3,26 @@ import ReactDOM from "react-dom";
 import Header from "./Header";
 import { useDispatch ,useSelector} from 'react-redux';
 import { StoreProvider ,useStore} from "store/store";
-import { StoreProvider as HeaderStoreProvider, useStore as headerUseStore} from "./store";
 import { headerIncrementCount } from "./modules/sideMenu/sample/actions";
-// import { getHeaderIncrementCount } from "./modules/sideMenu/sample/selectors";
-
-
 import "./index.scss";
 import { MODULE } from "./common/constant";
-import CombinedProvider from "./CombinedProvider";
+import {CombinedStoreProvider} from "./CombinedProvider";
+import { STATE_REDUCER_KEY } from "./modules/sideMenu/sample";
+
 const { actions, selectors={} } = useStore();
-
-const { actions:action, selectors:selector={} } = headerUseStore();
-
 const { getSampleDetailsCount,getIncrementCount } = selectors[`${MODULE.NAV}/sample`];
 const { actions: {incrementCount, setCount }={} } = actions[`${MODULE.NAV}/sample`];
-// const { actions: {incrementCount, setCount }={} } = actions[`${MODULE.NAV}/sample`];
-
 
 const App = () => {
   const dispatch = useDispatch();
-  // const count = useSelector(getSampleDetailsCount); 
   const incrementCountValue = useSelector(getIncrementCount); 
 
-  // const headerCount= useSelector(getHeaderIncrementCount);
+  const headerCount= useSelector(state=>state[STATE_REDUCER_KEY].headerIncrementCount.count)
 
   return (
     <div className="text-3xl mx-auto max-w-6xl">
       <Header />
       <p style={{fontSize:"25px"}}>Name: nav App</p>
-      {/* <p style={{fontSize:"25px"}}>Count: {count}</p> */}
       <div>
         <button
           onClick={()=>dispatch(incrementCount())}
@@ -48,13 +39,13 @@ const App = () => {
         </button>
       </div>
       {incrementCountValue}
-     {/* <p>headerCount:</p> {headerCount} */}
+     <p>headerCount:</p> {headerCount}
     </div>
   );
 };
 ReactDOM.render(
-  <CombinedProvider>
+  <CombinedStoreProvider>
   <App />
-  </CombinedProvider>
+  </CombinedStoreProvider>
 ,
  document.getElementById("app"));

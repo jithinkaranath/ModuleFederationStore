@@ -1,6 +1,6 @@
 export const MODULE = {
     "NAV": "nav",
-    "HEADER":"header"
+    "SIDEMENU":"sidemenu"
 };
 
 export const REQUEST_METHOD = {
