@@ -2,10 +2,10 @@ import React from "react";
 import { Provider } from "react-redux";
 import { store , selectors} from "./app/store";
 import actions from "./app/actions";
-import { rootReducer as StoreRootReducer } from "./app/rootReducers";
+import { rootReducer as StoreRootReducer, sliceActions } from "./app/rootReducers";
 
 export function useStore() {
-  return {actions, selectors, StoreRootReducer};
+  return {actions, selectors, StoreRootReducer, sliceActions};
 }
 
 export function StoreProvider({ children }) {

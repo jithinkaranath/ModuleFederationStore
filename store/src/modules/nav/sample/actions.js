@@ -2,6 +2,7 @@ import { createAction } from '@reduxjs/toolkit';
 import { STATE_REDUCER_KEY } from './constants';
 
 export const ACTION_TYPES = {
+  
   FETCH_SAMPLE_DETAILS: `${STATE_REDUCER_KEY}/FETCH_SAMPLE_DETAILS`,
   FETCH_SAMPLE_DETAILS_REQUEST: `${STATE_REDUCER_KEY}/FETCH_SAMPLE_DETAILS_REQUEST`,
   FETCH_SAMPLE_DETAILS_SUCCESS: `${STATE_REDUCER_KEY}/FETCH_SAMPLE_DETAILS_SUCCESS`,
@@ -12,14 +13,6 @@ export const ACTION_TYPES = {
 
 };
 
-export const fetchSampleDetails = createAction(
-  ACTION_TYPES.FETCH_SAMPLE_DETAILS
-);
-
-export const setCount = createAction(
-  ACTION_TYPES.SET_COUNT
-);
-
-export const incrementCount = createAction(
-  ACTION_TYPES.INCREMENT_COUNT
-);
+export const fetchSampleDetails = createAction( ACTION_TYPES.FETCH_SAMPLE_DETAILS );
+export const setCount = createAction( ACTION_TYPES.SET_COUNT );
+export const incrementCount = createAction( ACTION_TYPES.INCREMENT_COUNT );

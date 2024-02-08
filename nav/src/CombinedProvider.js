@@ -3,13 +3,12 @@ import { Provider } from "react-redux";
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
-
 import { StoreProvider as StoreProviderApp1, useStore as useStoreApp1 } from './store';
 import { StoreProvider as StoreProviderApp2, useStore as useStoreApp2 } from 'store/store';
 
-const { rootReducer } = useStoreApp1();
-const {StoreRootReducer} =  useStoreApp2();
 
+const { rootReducer } = useStoreApp1();
+const { StoreRootReducer } =  useStoreApp2();
 
 const sagaMiddleware = createSagaMiddleware();
 

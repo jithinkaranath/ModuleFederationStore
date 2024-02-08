@@ -21,6 +21,9 @@ const slice = createSlice({
     clearAll: () => initialState,
     setSampleCount: (state, { payload }) => {
       _.set(state, 'sampleDetails.count', payload);
+    },
+    setInitialIncrementCount: (state) => {
+      _.set(state, 'incrementCount.count', 0);
     }
   },
   extraReducers: (builder) => {
